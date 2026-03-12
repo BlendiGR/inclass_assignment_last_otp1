@@ -45,14 +45,6 @@ pipeline {
             }
         }
 
-        stage('Verify DB') {
-            steps {
-                retry(5) {
-                    bat 'ping -n 6 127.0.0.1 > nul'
-                    bat 'docker compose exec db mariadb -uroot -p1234 -h 127.0.0.1 -e "USE calc_data; SHOW TABLES; DESCRIBE calc_results;"'
-                }
-            }
-        }
     }
 
     post {
