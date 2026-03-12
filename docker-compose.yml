@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: mariadb:11
@@ -20,7 +18,7 @@ services:
     #IMPORTANT docker build -t yourname/sum-product-fx .
     # docker push yourname/sum-product-fx: last
     # then you can change the image in the following statment
-    image: amirdirin/sum-product_fx:latest
+    image: blendigr/blendi_test
     container_name: calculator-app
     depends_on:
       - db
