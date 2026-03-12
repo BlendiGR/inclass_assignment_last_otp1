@@ -11,7 +11,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/calculator.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setTitle("Sum & Product Calculator");
+        stage.setTitle("Calculator");
         stage.setScene(scene);
         stage.show();
     }

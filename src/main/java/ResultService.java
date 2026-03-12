@@ -33,7 +33,6 @@ public class ResultService {
         try (Connection conn = DriverManager.getConnection(dbUrl, DB_USER, DB_PASSWORD);
              Statement stmt = conn.createStatement()) {
 
-            // Create table if it doesn't exist (includes new columns)
             String createTable = """
                 CREATE TABLE IF NOT EXISTS calc_results (
                     id               INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,7 +47,6 @@ public class ResultService {
                 """;
             stmt.executeUpdate(createTable);
 
-            // Add new columns if table already existed without them (safe migration)
             for (String col : new String[]{
                     "ADD COLUMN IF NOT EXISTS subtract_result DOUBLE NOT NULL DEFAULT 0",
                     "ADD COLUMN IF NOT EXISTS division_result DOUBLE"}) {
@@ -56,7 +54,6 @@ public class ResultService {
                 catch (SQLException ignored) {}
             }
 
-            // Insert the result
             String insert = """
                 INSERT INTO calc_results
                     (number1, number2, sum_result, product_result, subtract_result, division_result)
