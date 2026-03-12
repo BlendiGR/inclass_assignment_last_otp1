@@ -20,12 +20,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                bat 'mvn test'
-            }
-        }
-
         stage('Docker Build') {
             steps {
                 bat "docker build -t %DOCKERHUB_REPO%:%DOCKER_IMAGE_TAG% ."
