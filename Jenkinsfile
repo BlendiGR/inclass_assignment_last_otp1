@@ -48,7 +48,7 @@ pipeline {
         stage('Verify DB') {
             steps {
                 bat '''
-                    docker compose exec -T db mariadb -uroot -pTest12 -e "USE calc_data; SHOW TABLES; DESCRIBE calc_results;"
+                    docker compose exec db mariadb -uroot -p1234 -e "USE calc_data; SHOW TABLES; DESCRIBE calc_results;"
                 '''
             }
         }
